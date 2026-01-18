@@ -1,0 +1,41 @@
+function MobileSideBar({ isOpen, onClose }) {
+  const categories = ["Home", "Discover", "Movie Release", "Forum", "About"];
+
+  return (
+    <>
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity"
+          onClick={onClose}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div
+        className={`fixed right-0 top-0 h-screen w-64 bg-zinc-900 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl
+          ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <div className="flex justify-end p-4">
+          <button onClick={onClose} className="hover:text-red-500">
+            <span className="material-symbols-outlined text-3xl">close</span>
+          </button>
+        </div>
+
+        <nav className="flex flex-col items-start px-6 gap-4">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className="w-full text-left text-xl font-heading hover:text-red-500 transition-colors py-2 border-b border-white/10"
+              onClick={onClose}
+            >
+              {category}
+            </button>
+          ))}
+        </nav>
+      </div>
+    </>
+  );
+}
+
+export default MobileSideBar;

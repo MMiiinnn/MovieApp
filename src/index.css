@@ -1,23 +1,22 @@
 @import "tailwindcss";
 
-/* Thiết lập màu nền và font chữ đặc trưng của Netflix */
-:root {
-  background-color: #141414;
-  color: white;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@theme {
+  --font-body: "Montserrat", "sans-serif";
+  --font-heading: "Bebas Neue", "sans-serif";
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Tránh cuộn ngang không mong muốn */
-}
+/* Font Global */
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
 
-/* Tùy chỉnh thanh cuộn cho các hàng phim (Row) */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
 }
