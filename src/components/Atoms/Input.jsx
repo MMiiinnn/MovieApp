@@ -1,10 +1,10 @@
-function Input({ id, label, ...props }) {
-  let classes = `py-2 px-4 border border-gray-500 w-full`;
+function Input({ id, label, className, ...props }) {
+  let classes = `py-2 px-4 border border-gray-500 w-full ${className}`;
 
   if (id === "search") {
-    classes += "  rounded-full bg-gray-600";
+    classes += " rounded-full bg-gray-600";
   } else {
-    classes += "  rounded-lg";
+    classes += " rounded-lg";
   }
 
   return (

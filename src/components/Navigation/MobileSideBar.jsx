@@ -1,10 +1,10 @@
-function MobileSideBar({ isOpen, onClose }) {
-  const categories = ["Home", "Discover", "Movie Release", "Forum", "About"];
+import Icon from "../Atoms/Icon";
 
+function MobileSideBar({ onOpen, onClose, links }) {
   return (
     <>
       {/* Overlay */}
-      {isOpen && (
+      {onOpen && (
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-opacity"
           onClick={onClose}
@@ -14,22 +14,22 @@ function MobileSideBar({ isOpen, onClose }) {
       {/* Sidebar */}
       <div
         className={`fixed right-0 top-0 h-screen w-64 bg-zinc-900 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl
-          ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+          ${onOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex justify-end p-4">
           <button onClick={onClose} className="hover:text-red-500">
-            <span className="material-symbols-outlined text-3xl">close</span>
+            <Icon name="close" />
           </button>
         </div>
 
         <nav className="flex flex-col items-start px-6 gap-4">
-          {categories.map((category) => (
+          {links.map((link) => (
             <button
-              key={category}
+              key={link}
               className="w-full text-left text-xl font-heading hover:text-red-500 transition-colors py-2 border-b border-white/10"
               onClick={onClose}
             >
-              {category}
+              {link}
             </button>
           ))}
         </nav>

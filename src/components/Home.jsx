@@ -1,12 +1,10 @@
-import Input from "./Input";
-import MobileSideBar from "./MobileSideBar";
-import Navbar from "./Navbar";
+import Input from "./Atoms/Input";
+import MobileSideBar from "./Navigation/MobileSideBar";
+import Navbar from "./Navigation/Navbar";
 
 function Home() {
   return (
     <div>
-      <Navbar />
-      <Input id="search" label="search" placeholder="Search..." />
       <p>This is Home Page.</p>
     </div>
   );
