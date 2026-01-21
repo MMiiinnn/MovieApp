@@ -1,8 +1,16 @@
-const Icon = ({ name, className = "" }) => {
+const Icon = ({ name, className = "", type = "", iconAwesome }) => {
+  const iconType = type === "awesome";
+
   return (
-    <span className={`material-symbols-outlined ${className} select-none`}>
-      {name}
-    </span>
+    <>
+      {iconType ? (
+        <i className={iconAwesome}></i>
+      ) : (
+        <span className={`material-symbols-outlined ${className} select-none`}>
+          {name}
+        </span>
+      )}
+    </>
   );
 };
 

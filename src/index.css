@@ -3,9 +3,9 @@
 @theme {
   --font-body: "Montserrat", "sans-serif";
   --font-heading: "Bebas Neue", "sans-serif";
+  --color-brand-green: #16a34a;
 }
 
-/* Font Global */
 @layer base {
   body {
     font-family: var(--font-body);
@@ -18,5 +18,25 @@
   h5,
   h6 {
     font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  /* Loại bỏ outline mặc định cho Swiper */
+  .swiper-slide {
+    @apply border-none outline-none bg-transparent;
+  }
+
+  /* Custom Pagination Bullets */
+  .swiper-pagination-bullet {
+    @apply bg-white opacity-50 transition-all duration-300;
+    background: white !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    @apply opacity-100;
+    background: var(--color-brand-green) !important;
+    width: 20px !important;
+    border-radius: 4px !important;
   }
 }

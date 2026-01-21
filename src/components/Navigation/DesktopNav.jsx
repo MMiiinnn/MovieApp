@@ -29,7 +29,7 @@ function DesktopNav() {
       <div className="flex items-center gap-4 h-full relative">
         {/* Search input */}
         <div
-          className={`absolute right-0 flex items-center bg-zinc-900 rounded-full transition-all duration-500 ease-in-out overflow-hidden z-20
+          className={`absolute right-0 flex items-center bg-transparent rounded-full transition-all duration-500 ease-in-out overflow-hidden z-20
             ${isSearch ? "w-100 px-3 py-1 border border-zinc-700" : "w-0 opacity-0"}`}
         >
           <Icon name="search" className="text-2xl text-zinc-400 ml-2" />

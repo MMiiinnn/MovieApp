@@ -24,7 +24,7 @@ function Button({
       className={`${baseStyles} ${variants[variant]} ${widthStyle} ${className}`}
       {...props}
     >
-      {icon && <Icon name={icon} className="text-xl!" />} {children}
+      {icon && <Icon name={icon} className="text-xl" />} {children}
     </button>
   );
 }
