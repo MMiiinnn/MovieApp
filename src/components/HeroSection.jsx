@@ -7,6 +7,8 @@ import "swiper/css/effect-fade";
 import Button from "./Atoms/Button";
 
 const HeroSection = ({ movies }) => {
+  if (!movies || movies.length === 0)
+    return <div className="h-screen bg-black" />;
   return (
     <section className="h-[75vh] lg:h-screen w-full bg-black">
       <Swiper
@@ -17,9 +19,9 @@ const HeroSection = ({ movies }) => {
         loop={true}
         autoplay={{ delay: 5000 }}
         pagination={{ clickable: true }}
-        className="h-full w-full"
+        className="hero-swiper h-full w-full"
       >
-        {movies.map((movie) => (
+        {movies.slice(0, 6).map((movie) => (
           <SwiperSlide key={movie.id} className="border-none">
             <div className="relative h-full w-full">
               {/* Backdrop */}

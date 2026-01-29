@@ -20,14 +20,16 @@ const MovieList = ({
   const skeletonCount = 6;
   return (
     <section className="py-10 px-6 lg:px-16 overflow-hidden">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="font-heading text-2xl lg:text-4xl text-white tracking-wider uppercase border-l-4 border-green-500 pl-4">
-          {title}
-        </h2>
-        <button className="font-body text-green-500 text-sm font-bold hover:text-green-400 transition-colors">
-          VIEW ALL
-        </button>
-      </div>
+      {title && (
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="font-heading text-2xl lg:text-4xl text-white tracking-wider uppercase border-l-4 border-green-500 pl-4">
+            {title}
+          </h2>
+          <button className="font-body text-green-500 text-sm font-bold hover:text-green-400 transition-colors">
+            VIEW ALL
+          </button>
+        </div>
+      )}
 
       <Swiper
         modules={[FreeMode, Navigation]}

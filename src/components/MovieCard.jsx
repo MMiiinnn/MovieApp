@@ -9,14 +9,14 @@ const MovieCard = ({
   rank,
   imageType = "poster",
 }) => {
-  const isLandscape = imageType === "landscape";
+  const isLandscape = imageType === " ";
   const aspectClass = isLandscape ? "aspect-video" : "aspect-2/3";
 
   // LAYOUT POPULAR
   if (variant === "horizontal") {
     return (
-      <div className="group relative flex items-center gap- py-4">
-        <span className="absolute -left-3 text-7xl lg:text-8xl font-black text-white/10 italic z-0 transition-colors group-hover:text-green-500/20">
+      <div className="group relative flex items-center gap- py-4 cursor-pointer">
+        <span className="absolute -left-7 text-7xl lg:text-8xl font-black text-white/50 italic z-100 transition-colors group-hover:text-green-500/50 ">
           {rank}
         </span>
 
@@ -28,7 +28,7 @@ const MovieCard = ({
           />
         </div>
 
-        <div className="z-10 flex flex-col justify-center">
+        <div className="z-10 flex flex-col justify-center pl-2.5">
           <Badge className="mb-2 w-fit bg-zinc-800 text-[10px] text-zinc-400 border-zinc-700">
             {movie.ageRating || "PG-13"}
           </Badge>

@@ -37,7 +37,7 @@ function DesktopNav() {
             className="bg-transparent border-none outline-none px-3 w-full text-white h-10"
             placeholder="Search movies..."
             autoFocus={isSearch}
-            onBlur={() => setIsSearch(false)} // Tự đóng khi click ra ngoài
+            onBlur={() => setIsSearch(false)} // Close when clicking outside
           />
           <button
             onClick={() => setIsSearch(false)}
