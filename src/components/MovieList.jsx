@@ -1,4 +1,3 @@
-// src/components/MovieList.jsx
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper/modules";
 import MovieCard from "./MovieCard";
@@ -18,6 +17,7 @@ const MovieList = ({
   const isPopular = variant === "popular";
   const isLandscape = imageType === "landscape";
   const skeletonCount = 6;
+
   return (
     <section className="py-10 px-6 lg:px-16 overflow-hidden">
       {title && (
@@ -43,7 +43,7 @@ const MovieList = ({
         className="movie-swiper overflow-visible!"
       >
         {isLoading
-          ? // 1. Show Skeletons inside SwiperSlides so the track is still "slidable"
+          ? // Show Skeleton
             [...Array(skeletonCount)].map((_, i) => (
               <SwiperSlide
                 key={`skeleton-${i}`}
@@ -58,7 +58,7 @@ const MovieList = ({
                 />
               </SwiperSlide>
             ))
-          : // 2. Show Real Data
+          : // Show data
             movies.map((movie, index) => (
               <SwiperSlide
                 key={movie.id}

@@ -9,7 +9,7 @@ const MovieCard = ({
   rank,
   imageType = "poster",
 }) => {
-  const isLandscape = imageType === " ";
+  const isLandscape = imageType === "";
   const aspectClass = isLandscape ? "aspect-video" : "aspect-2/3";
 
   // LAYOUT POPULAR
@@ -38,7 +38,7 @@ const MovieCard = ({
           </p>
 
           <div className="flex flex-col gap-1.5">
-            <Genres genres={movie.genres} />
+            <Genres genres={movie.genres} icon />
             <div className="flex items-center gap-2">
               <MovieRating score={movie.rating} />
               <span className="text-zinc-600">|</span>
