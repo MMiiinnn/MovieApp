@@ -1,18 +1,34 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import BackToTop from "./components/Atoms/BackToTop";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import Navbar from "./components/Navigation/Navbar";
+import RootLayout from "./components/layouts/RootLayout";
+import ErrorPage from "./components/pages/ErrorPage";
+import HomePage from "./components/pages/HomePage";
+import MovieDetailPage from "./components/pages/MovieDetailPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "movie/:movieId",
+        element: <MovieDetailPage />,
+      },
+      {
+        path: "search",
+        element: <div>Search Page</div>,
+      },
+    ],
+  },
+]);
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <Home />
-      <Footer />
-      <BackToTop />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

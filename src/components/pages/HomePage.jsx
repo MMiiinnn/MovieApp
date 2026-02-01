@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import HeroSection from "./HeroSection";
-import MovieList from "./MovieList";
-import tmdbService from "./services/tmdbService";
-import AwardSection from "./AwardSection";
+import HeroSection from "../HeroSection";
+import MovieList from "../MovieList";
+import tmdbService from "../services/tmdbService";
+import AwardSection from "../AwardSection";
 
 function Home() {
   const [loading, setLoading] = useState(false);
