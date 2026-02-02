@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../navigation/Navbar";
-import Footer from "../Footer";
+import Navbar from "../organisms/navigation/Navbar";
+import Footer from "../organisms/Footer";
 import BackToTop from "../atoms/BackToTop";
 
 const RootLayout = () => {

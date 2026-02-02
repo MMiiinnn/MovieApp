@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation } from "swiper/modules";
-import MovieCard from "./MovieCard";
-import MovieCardSkeleton from "./atoms/MovieCardSkeleton";
+import MovieCard from "../molecules/MovieCard";
+import MovieCardSkeleton from "../atoms/MovieCardSkeleton";
 
 import "swiper/css";
 import "swiper/css/free-mode";

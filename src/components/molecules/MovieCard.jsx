@@ -1,7 +1,7 @@
 // src/components/Molecules/MovieCard.jsx
-import Badge from "./atoms/Badge";
-import Genres from "./atoms/Genres";
-import MovieRating from "./atoms/MovieRating";
+import Badge from "../atoms/Badge";
+import Genres from "../atoms/Genres";
+import MovieRating from "../atoms/MovieRating";
 
 const MovieCard = ({
   movie,

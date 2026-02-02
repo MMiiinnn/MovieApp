@@ -1,9 +1,9 @@
-import Badge from "./atoms/Badge";
-import Button from "./atoms/Button";
-import MovieRating from "./atoms/MovieRating";
-import { formatRuntime } from "./helpers/formatRuntime";
-import { getImageUrl } from "./services/apiConfig";
-import Genres from "./atoms/Genres";
+import Badge from "../atoms/Badge";
+import Button from "../atoms/Button";
+import MovieRating from "../atoms/MovieRating";
+import { formatRuntime } from "../helpers/formatRuntime";
+import { getImageUrl } from "../services/apiConfig";
+import Genres from "../atoms/Genres";
 import SideMovieList from "./SideMovieList";
 
 const AwardSection = ({
@@ -33,7 +33,7 @@ const AwardSection = ({
 
         <div className="relative group overflow-hidden rounded-2xl aspect-video mb-6">
           <img
-            src={getImageUrl(featuredMovie.backdrop_path, "original")}
+            src={getImageUrl(featuredMovie.backdrop, "original")}
             alt={featuredMovie.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />

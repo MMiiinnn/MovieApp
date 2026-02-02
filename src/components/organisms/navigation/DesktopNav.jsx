@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Icon from "../Atoms/Icon";
-import Button from "../Atoms/Button";
-import Input from "../Atoms/Input";
+import Icon from "../../Atoms/Icon";
+import Button from "../../Atoms/Button";
+import Input from "../../Atoms/Input";
 
 function DesktopNav() {
   const [isSearch, setIsSearch] = useState(false);

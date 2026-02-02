@@ -4,7 +4,7 @@ import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import Button from "./Atoms/Button";
+import Button from "../Atoms/Button";
 
 const HeroSection = ({ movies }) => {
   if (!movies || movies.length === 0)

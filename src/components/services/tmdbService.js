@@ -101,7 +101,7 @@ const tmdbService = {
       // 2. Trả về object kết hợp (Hợp nhất dữ liệu nhẹ và nặng)
       return {
         ...movie,
-        runtime: data.runtime, // Phục vụ AwardSection
+        runtime: data.runtime,
         genres: data.genres?.map((g) => g.name) || [],
 
         // Chỉ xử lý các mảng dữ liệu lớn nếu extended = true

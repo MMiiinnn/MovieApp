@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import Badge from "./atoms/Badge";
-import Button from "./atoms/Button";
-import Icon from "./atoms/Icon";
-import Genres from "./atoms/Genres";
+import Badge from "../atoms/Badge";
+import Button from "../atoms/Button";
+import Icon from "../atoms/Icon";
+import Genres from "../atoms/Genres";
 
 const SidebarMovieList = ({ title, movies, isLive = false }) => {
   const listRef = useRef(null);
