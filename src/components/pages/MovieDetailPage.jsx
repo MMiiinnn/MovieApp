@@ -13,7 +13,6 @@ const MovieDetailPage = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Check if current path ends with /watch to switch UI mode
   const isWatching = location.pathname.endsWith("/watch");
 
   useEffect(() => {
@@ -29,10 +28,10 @@ const MovieDetailPage = () => {
       } finally {
         setLoading(false);
       }
+      window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     fetchMovieData();
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [movieId]);
 
   if (loading) {
@@ -61,10 +60,8 @@ const MovieDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white pb-20">
-      {/* 1. DYNAMIC HEADER SECTION */}
       <div className="relative w-full overflow-hidden">
         {isWatching ? (
-          /* 🎬 WATCH MODE: Video Player and Back Navigation */
           <div className="pt-28 px-6 lg:px-16 max-w-7xl mx-auto animate-in fade-in slide-in-from-bottom-6 duration-700">
             <div className="flex justify-between items-center mb-6">
               <Link
@@ -86,7 +83,6 @@ const MovieDetailPage = () => {
             </div>
           </div>
         ) : (
-          /* ℹ️ INFO MODE: Cinematic Backdrop & Play CTA */
           <div className="relative h-[65vh] lg:h-[85vh] w-full transition-all duration-700">
             <img
               src={movie.backdrop}
@@ -110,7 +106,7 @@ const MovieDetailPage = () => {
               </Link>
             </div>
 
-            {/* Poster & Title Overlay: Lower Z-index and pointer-events-none on the container */}
+            {/* Poster & Title Overlay */}
             <div className="absolute bottom-0 left-0 w-full px-6 lg:px-16 pb-12 flex flex-col lg:flex-row items-end gap-10 z-10 pointer-events-none">
               <img
                 src={movie.poster}
@@ -143,7 +139,7 @@ const MovieDetailPage = () => {
         )}
       </div>
 
-      {/* 2. SHARED CONTENT GRID: Story, Cast, and Trailer */}
+      {/* SHARED CONTENT GRID: Story, Cast, and Trailer */}
       <div className="px-6 lg:px-16 mt-20 grid grid-cols-1 lg:grid-cols-3 gap-20">
         {/* Main Content: Storyline & Cast */}
         <div className="lg:col-span-2 space-y-20">
