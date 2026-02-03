@@ -4,6 +4,7 @@ import RootLayout from "./components/layouts/RootLayout";
 import ErrorPage from "./components/pages/ErrorPage";
 import HomePage from "./components/pages/HomePage";
 import MovieDetailPage from "./components/pages/MovieDetailPage";
+import VideoPlayer from "./components/organisms/VideoPlayer";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: "movie/:movieId",
         element: <MovieDetailPage />,
+        children: [{ path: "watch", element: <VideoPlayer /> }],
       },
       {
         path: "search",

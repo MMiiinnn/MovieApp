@@ -1,4 +1,4 @@
-import Icon from "./Icon.jsx";
+import Icon from "./Icon";
 
 function Button({
   children,
