@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Icon from "./Icon";
 import Button from "./Button";
 
-const BackToTop = () => {
+const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -41,4 +41,4 @@ const BackToTop = () => {
   );
 };
 
-export default BackToTop;
+export default ScrollToTop;

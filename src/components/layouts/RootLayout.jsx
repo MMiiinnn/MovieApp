@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../organisms/navigation/Navbar";
 import Footer from "../organisms/Footer";
-import BackToTop from "../atoms/BackToTop";
+import ScrollToTop from "../atoms/ScrollToTop";
 
 const RootLayout = () => {
   return (
@@ -13,7 +13,7 @@ const RootLayout = () => {
       </main>
 
       <Footer />
-      <BackToTop />
+      <ScrollToTop />
     </div>
   );
 };
