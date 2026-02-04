@@ -1,4 +1,4 @@
-import Icon from "../../Atoms/Icon";
+import Icon from "../../atoms/Icon";
 
 function MobileSideBar({ onOpen, onClose, links }) {
   return (

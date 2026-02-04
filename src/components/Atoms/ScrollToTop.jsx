@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Icon from "./Icon";
-import Button from "./Button";
+import Icon from "../atoms/Icon";
+import Button from "../atoms/Button";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Icon from "../../Atoms/Icon";
-import Input from "../../Atoms/Input";
+import Icon from "../../atoms/Icon";
+import Input from "../../atoms/Input";
 
 function MobileNav({ isOpenSidebar }) {
   const [isSearch, setIsSearch] = useState(false);

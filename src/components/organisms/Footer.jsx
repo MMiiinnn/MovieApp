@@ -1,4 +1,4 @@
-import Icon from "../Atoms/Icon"; // Hoặc sử dụng font-awesome/lucide-react
+import Icon from "../atoms/Icon"; // Hoặc sử dụng font-awesome/lucide-react
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

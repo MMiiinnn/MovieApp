@@ -1,5 +1,3 @@
-// src/components/Atoms/MovieCardSkeleton.jsx
-
 const MovieCardSkeleton = ({ variant = "vertical" }) => {
   // Skeleton for the Popular/Horizontal variant
   if (variant === "horizontal") {
