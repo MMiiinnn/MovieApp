@@ -6,7 +6,6 @@ const VideoPlayer = () => {
   const { movie } = useOutletContext();
   const [server, setServer] = useState(0);
 
-  // Danh sách các server streaming ổn định nhất hiện nay
   const servers = [
     {
       name: "Server 1",
@@ -77,10 +76,7 @@ const VideoPlayer = () => {
             allowFullScreen
             scrolling="no"
             allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer"
-            // Sandbox: Cho phép popups để server phim có thể khởi tạo player, 
-            // nhưng không cho phép top-navigation để tránh tự nhảy trang quảng cáo.
-            // sandbox="allow-forms allow-scripts allow-same-origin allow-presentation allow-popups"
-            referrerPolicy="origin"
+            referrerPolicy="no-referrer"
             loading="lazy"
             style={{ overflow: 'hidden' }}
           />
