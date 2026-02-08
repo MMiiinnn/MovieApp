@@ -24,5 +24,7 @@ dist-ssr
 *.sw?
 
 # Dev note
-Dev-note.md
+ROADMAP.md
+PROGRESS.md
+
 .env

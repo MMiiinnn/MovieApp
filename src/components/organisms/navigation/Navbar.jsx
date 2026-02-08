@@ -3,7 +3,7 @@ import MobileSideBar from "./MobileSideBar";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
 
-const LINKS = ["Home", "Discover", "Movie Release", "Forum", "About"];
+const LINKS = ["Home", "Discover", "Movie Release", "Forum", "About", "Watchlist"];
 
 function Navbar() {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);

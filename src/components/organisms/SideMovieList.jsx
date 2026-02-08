@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Badge from "../atoms/Badge";
 import Button from "../atoms/Button";
 import Icon from "../atoms/Icon";
@@ -6,12 +7,17 @@ import Genres from "../atoms/Genres";
 
 const SidebarMovieList = ({ title, movies, isLive = false }) => {
   const listRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleScroll = (direction) => {
     if (listRef.current) {
       const scrollAmount = direction === "up" ? -320 : 320;
       listRef.current.scrollBy({ top: scrollAmount, behavior: "smooth" });
     }
+  };
+
+  const handleClick = (movieId) => {
+    navigate(`/movie/${movieId}`);
   };
 
   const hoverBorderColor = isLive
@@ -48,6 +54,7 @@ const SidebarMovieList = ({ title, movies, isLive = false }) => {
           <div
             key={movie.id}
             className="flex gap-4 group cursor-pointer shrink-0"
+            onClick={() => handleClick(movie.id)}
           >
             <div
               className={`w-16 h-24 lg:w-20 lg:h-28 shrink-0 rounded-xl overflow-hidden border-2 border-transparent ${hoverBorderColor} transition-all duration-300`}

@@ -10,7 +10,7 @@ const VideoPlayer = () => {
     {
       name: "Server 1",
       tag: "Auto - Best",
-      url: `https://multiembed.mov/?video_id=${movie.id}&tmdb=1`,
+      url: `https://vidsrc.cc/v2/embed/movie/${movie.id}`,
     },
     {
       name: "Server 2",
@@ -22,10 +22,11 @@ const VideoPlayer = () => {
       tag: "Pro",
       url: `https://vidsrc.pro/embed/movie/${movie.id}`,
     },
+
     {
       name: "Server 4",
       tag: "Alt",
-      url: `https://vidsrc.cc/v2/embed/movie/${movie.id}`,
+      url: `https://multiembed.mov/?video_id=${movie.id}&tmdb=1`,
     },
   ];
 
@@ -69,16 +70,13 @@ const VideoPlayer = () => {
         
         <div className="w-full aspect-video bg-black rounded-2xl lg:rounded-[2rem] overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.8)] border border-white/5 relative z-10 ring-1 ring-white/10">
           <iframe
-            key={servers[server].url} // KEY quan trọng: Ép iframe load lại khi đổi server
+            key={servers[server].url}
             src={servers[server].url}
-            className="absolute inset-0 w-full h-full border-0 focus:outline-none"
+            className="absolute inset-0 w-full h-full focus:outline-none"
             title={`Watching ${movie.title}`}
-            allowFullScreen
-            scrolling="no"
-            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer"
-            referrerPolicy="no-referrer"
+            allowFullScreen={true}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
             loading="lazy"
-            style={{ overflow: 'hidden' }}
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-// src/components/Molecules/MovieCard.jsx
+import { useNavigate } from "react-router-dom";
 import Badge from "../atoms/Badge";
 import Genres from "../atoms/Genres";
 import MovieRating from "../atoms/MovieRating";
@@ -9,13 +9,21 @@ const MovieCard = ({
   rank,
   imageType = "poster",
 }) => {
+  const navigate = useNavigate();
   const isLandscape = imageType === "";
   const aspectClass = isLandscape ? "aspect-video" : "aspect-2/3";
+
+  const handleClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
 
   // LAYOUT POPULAR
   if (variant === "horizontal") {
     return (
-      <div className="group relative flex items-center gap- py-4 cursor-pointer">
+      <div
+        className="group relative flex items-center gap- py-4 cursor-pointer"
+        onClick={handleClick}
+      >
         <span className="absolute -left-7 text-7xl lg:text-8xl font-black text-white/50 italic z-100 transition-colors group-hover:text-green-500/50 ">
           {rank}
         </span>
@@ -52,7 +60,10 @@ const MovieCard = ({
 
   // LAYOUT CARD VERTICAL
   return (
-    <div className="group relative cursor-pointer overflow-hidden rounded-2xl bg-zinc-900 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
+    <div
+      className="group relative cursor-pointer overflow-hidden rounded-2xl bg-zinc-900 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20"
+      onClick={handleClick}
+    >
       <div className={`${aspectClass} w-full`}>
         <img
           src={isLandscape ? movie.backdrop : movie.poster}

@@ -6,12 +6,16 @@ import Badge from "../atoms/Badge";
 import Icon from "../atoms/Icon";
 import CastCard from "../molecules/CastCard";
 import MovieList from "../organisms/MovieList";
+import useWatchlistStore from "../../store/useWatchlistStore";
+import Button from "../atoms/Button";
 
 const MovieDetailPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { addToWatchlist, removeFromWatchlist, isInWatchlist } =
+    useWatchlistStore();
 
   const isWatching = location.pathname.endsWith("/watch");
 
@@ -58,6 +62,16 @@ const MovieDetailPage = () => {
     );
   }
 
+  const inWatchlist = isInWatchlist(movie.id);
+
+  const toggleWatchlist = () => {
+    if (inWatchlist) {
+      removeFromWatchlist(movie.id);
+    } else {
+      addToWatchlist(movie);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-zinc-950 text-white pb-20">
       <div className="relative w-full overflow-hidden">
@@ -78,8 +92,8 @@ const MovieDetailPage = () => {
               </h2>
             </div>
 
-            <div className="relative z-50">
-              <Outlet context={{ movie }} />
+            <div className="relative z-10">
+              <Outlet context={{ movie, isWatching }} />
             </div>
           </div>
         ) : (
@@ -122,7 +136,7 @@ const MovieDetailPage = () => {
                 <h1 className="text-5xl lg:text-8xl font-black uppercase tracking-tighter italic mb-5 leading-[0.9]">
                   {movie.title}
                 </h1>
-                <div className="flex items-center gap-8 text-zinc-300">
+                <div className="flex items-center gap-8 text-zinc-300 mb-6">
                   <MovieRating score={movie.rating} />
                   <span className="w-1.5 h-1.5 bg-green-500 rounded-full shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
                   <span className="font-bold tracking-widest">
@@ -132,6 +146,17 @@ const MovieDetailPage = () => {
                   <span className="font-bold tracking-widest">
                     {movie.type}
                   </span>
+                </div>
+
+                <div className="flex gap-4">
+                  <Button
+                    variant={inWatchlist ? "primary" : "outline"}
+                    onClick={toggleWatchlist}
+                    className="px-6 py-3 rounded-full! gap-2 flex items-center border border-white/20 hover:border-green-500"
+                  >
+                    <Icon name={inWatchlist ? "check" : "add"} />
+                    {inWatchlist ? "Added to Watchlist" : "Add to Watchlist"}
+                  </Button>
                 </div>
               </div>
             </div>
