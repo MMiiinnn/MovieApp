@@ -106,10 +106,10 @@ const MovieDetailPage = () => {
             <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/40 to-transparent z-0" />
 
             {/* Center Play Button: Higher Z-index to ensure clickability */}
-            <div className="absolute inset-0 flex items-center justify-center z-30">
+            <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
               <Link
                 to={`/movie/${movieId}/watch`}
-                className="group flex flex-col items-center gap-5 transition-transform hover:scale-110 active:scale-95"
+                className="group flex flex-col items-center gap-5 transition-transform hover:scale-110 active:scale-95 pointer-events-auto"
               >
                 <div className="w-20 h-20 lg:w-28 lg:h-28 bg-green-600 rounded-full flex items-center justify-center shadow-[0_0_60px_rgba(22,163,74,0.4)] group-hover:bg-green-500 group-hover:shadow-[0_0_80px_rgba(22,163,74,0.6)] transition-all duration-300">
                   <Icon name="play_arrow" />
@@ -133,7 +133,7 @@ const MovieDetailPage = () => {
                     <Badge key={genre}>{genre}</Badge>
                   ))}
                 </div>
-                <h1 className="text-5xl lg:text-8xl font-black uppercase tracking-tighter italic mb-5 leading-[0.9]">
+                <h1 className="text-5xl lg:text-8xl font-black uppercase  italic mb-5 leading-[0.9]">
                   {movie.title}
                 </h1>
                 <div className="flex items-center gap-8 text-zinc-300 mb-6">

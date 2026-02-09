@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HeroSection from "../organisms/HeroSection";
 import MovieList from "../organisms//MovieList";
@@ -68,6 +69,20 @@ function Home() {
 
     fetchMovies();
   }, []);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 500); // Delay to ensure content is loaded
+      }
+    }
+  }, [location, loading]);
+
   return (
     <>
       <HeroSection movies={movies.trending} />
@@ -117,11 +132,13 @@ function Home() {
         isLoading={loading}
       />
 
-      <MovieList
-        title="Upcoming Movies"
-        movies={movies.upComing}
-        isLoading={loading}
-      />
+      <div id="upcoming">
+        <MovieList
+          title="Upcoming Movies"
+          movies={movies.upComing}
+          isLoading={loading}
+        />
+      </div>
       <MovieList
         title="Trending Series"
         movies={movies.topRated}

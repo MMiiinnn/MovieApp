@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Icon from "../../atoms/Icon";
 import Button from "../../atoms/Button";
@@ -7,6 +7,14 @@ import Search from "../../molecules/Search";
 function DesktopNav({links}) {
   const navigate = useNavigate();
   const [isSearch, setIsSearch] = useState(false);
+
+  const urlList = {
+    "Home": "/",
+    "Discover": "/search",
+    "Movie Release": "/#upcoming",
+    "About": "/about",
+    "Watchlist": "/watchlist",
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,12 +42,21 @@ function DesktopNav({links}) {
       >
         {links.map((link) => (
           <li key={link} className="h-full">
-            <a
-              href="#"
-              className="flex items-center h-full px-5 hover:bg-white hover:text-black transition-all"
-            >
-              {link}
-            </a>
+            {urlList[link]?.startsWith("/#") ? (
+              <a
+                href={urlList[link]}
+                className="flex items-center h-full px-5 hover:bg-white hover:text-black transition-all"
+              >
+                {link}
+              </a>
+            ) : (
+              <Link
+                to={urlList[link]}
+                className="flex items-center h-full px-5 hover:bg-white hover:text-black transition-all"
+              >
+                {link}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

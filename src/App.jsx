@@ -7,6 +7,7 @@ import MovieDetailPage from "./components/pages/MovieDetailPage";
 import VideoPlayer from "./components/organisms/VideoPlayer";
 import SearchPage from "./components/pages/SearchPage";
 import WatchlistPage from "./components/pages/WatchlistPage";
+import AboutPage from "./components/pages/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "watchlist",
         element: <WatchlistPage />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
       },
       {
         path: "*",

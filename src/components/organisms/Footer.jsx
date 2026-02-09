@@ -75,7 +75,7 @@ const Footer = () => {
 
           {/* Copyright Mobile */}
           <p className="lg:hidden text-zinc-600 text-xs font-body">
-            © {currentYear}
+            © {currentYear} FillFilm. All rights reserved.
           </p>
         </div>
       </div>

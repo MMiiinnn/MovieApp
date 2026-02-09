@@ -14,24 +14,25 @@ const SearchPage = () => {
   const [activeFilter, setActiveFilter] = useState("all"); // 'all', 'Movie', 'TV Series'
 
   useEffect(() => {
-    if (!query) {
-      setMovies([]);
-      return;
-    }
-
     const fetchResults = async () => {
       setLoading(true);
       setActiveFilter("all"); // Reset filter on new search
       try {
-        const results = await tmdbService.search(query);
-        setMovies(results);
+        if (query) {
+          const results = await tmdbService.search(query);
+          setMovies(results);
+        } else {
+          // Default : Trending
+          const results = await tmdbService.getTrending();
+          setMovies(results);
+        }
       } catch (err) {
         console.error(err);
         setMovies([]);
       } finally {
         setLoading(false);
       }
-    };
+    };  
 
     fetchResults();
   }, [query]);
@@ -52,7 +53,7 @@ const SearchPage = () => {
     <div className="pt-24 px-6 lg:px-16 min-h-screen">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <h2 className="text-3xl font-heading text-white border-l-4 border-green-500 pl-4">
-          Search Results for "{query}"
+          {query ? `Search Results for "${query}"` : "Discover Trending"}
         </h2>
 
         {/* Filters */}
@@ -92,7 +93,9 @@ const SearchPage = () => {
           </div>
           <h3 className="text-2xl font-bold text-white">No matches found</h3>
           <p className="max-w-md">
-            We couldn't find any movies or TV shows matching "{query}" with the current filters.
+            {query
+              ? `We couldn't find any movies or TV shows matching "${query}" with the current filters.`
+              : "No trending content found at the moment."}
           </p>
           {movies.length > 0 && activeFilter !== "all" && <Button variant="outline" onClick={() => setActiveFilter("all")}>
             Clear Filters
