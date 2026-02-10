@@ -40,7 +40,7 @@ function MobileNav({ isOpenSidebar }) {
           ${isSearch ? "opacity-0 invisible -translate-x-5" : "opacity-100 visible translate-x-0"}`}
       >
         <h1 
-          className="text-4xl p-3 cursor-pointer" 
+          className="text-4xl p-3 cursor-pointer hover:text-green-500 transition-colors" 
           onClick={() => navigate("/")}
         >
           FillFilm
@@ -56,7 +56,7 @@ function MobileNav({ isOpenSidebar }) {
       </nav>
 
       <div
-        className={`absolute inset-0 flex items-center gap-2 py-2 px-3 bg-zinc-900/95 backdrop-blur-md transition-all duration-500 ease-in-out z-10
+        className={`absolute inset-0 flex items-center gap-2 py-2 px-3 bg-zinc-950/95 backdrop-blur-md transition-all duration-500 ease-in-out z-10
           ${isSearch ? "w-full opacity-100 translate-y-0" : "w-full opacity-0 -translate-y-full pointer-events-none"}`}
       >
         <button 

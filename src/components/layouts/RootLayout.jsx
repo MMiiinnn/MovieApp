@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import Navbar from "../organisms/navigation/Navbar";
 import Footer from "../organisms/Footer";
@@ -21,6 +22,7 @@ const RootLayout = () => {
 
       <Footer />
       <ScrollToTop />
+      <Toaster />
     </div>
   );
 };

@@ -1,6 +1,47 @@
-import React from "react";
+import { useState } from "react";
 import Button from "../atoms/Button";
 import { Link } from "react-router-dom";
+import geminiService from "../../services/geminiService"; 
+import toast from "react-hot-toast";
+
+const TestConnection = () => {
+    const [status, setStatus] = useState("");
+
+    const handleTest = async () => {
+      // Use this ID to update the toast when the AI is connected or disconnected
+        const loadingToast = toast.loading("Connecting to Gemini...");
+        setStatus("loading");
+        
+        try {
+            const response = await geminiService.generateText("Say 'Hello from Gemini!' if you can hear me.");
+            if (response) {
+                toast.success("AI Connection Successful!", { id: loadingToast });
+                toast(response, { icon: '🤖', duration: 3000 });
+                setStatus("success");
+            } else {
+                throw new Error("No response");
+            }
+        } catch (error) {
+            toast.error("Connection Failed. Check API Key.", { id: loadingToast });
+            setStatus("error");
+        }
+    };
+
+    return (
+        <div className="flex flex-col items-center gap-2">
+            <Button 
+                variant="outline" 
+                onClick={handleTest} 
+                className="text-xs py-2 px-4"
+                disabled={status === "loading"}
+            >
+                {status === "loading" ? "Connecting..." : "Test AI Availability"}
+            </Button>
+            {status === "success" && <span className="text-green-500 text-xs">● Online</span>}
+            {status === "error" && <span className="text-red-500 text-xs">● Offline</span>}
+        </div>
+    );
+};
 
 const AboutPage = () => {
   return (
@@ -62,6 +103,12 @@ const AboutPage = () => {
               Start Exploring
             </Button>
            </Link>
+        </section>
+
+        {/* AI Connection Test  */}
+        <section className="bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800 text-center">
+            <h3 className="text-zinc-500 font-bold mb-4 uppercase tracking-widest text-xs">System Status</h3>
+            <TestConnection />
         </section>
 
         <footer className="text-center text-zinc-700 text-xs pb-10 uppercase tracking-widest">

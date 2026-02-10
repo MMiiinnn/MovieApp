@@ -4,6 +4,7 @@ import HeroSection from "../organisms/HeroSection";
 import MovieList from "../organisms//MovieList";
 import tmdbService from "../services/tmdbService";
 import AwardSection from "../organisms/AwardSection";
+import MoodPicker from "../organisms/MoodPicker";
 
 function Home() {
   const [loading, setLoading] = useState(false);
@@ -86,6 +87,7 @@ function Home() {
   return (
     <>
       <HeroSection movies={movies.trending} />
+      <MoodPicker />
       <MovieList
         title="Just Release"
         movies={movies.nowPlaying}

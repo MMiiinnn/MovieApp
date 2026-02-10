@@ -8,6 +8,8 @@ import CastCard from "../molecules/CastCard";
 import MovieList from "../organisms/MovieList";
 import useWatchlistStore from "../../store/useWatchlistStore";
 import Button from "../atoms/Button";
+import geminiService from "../../services/geminiService";
+import toast from "react-hot-toast";
 
 const MovieDetailPage = () => {
   const { movieId } = useParams();
@@ -16,6 +18,23 @@ const MovieDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } =
     useWatchlistStore();
+  
+  const [aiReason, setAiReason] = useState(null);
+  const [aiLoading, setAiLoading] = useState(false);
+
+  const fetchAiReason = async () => {
+    setAiLoading(true);
+    try {
+        const prompt = `Give me a short, intriguing, 1-sentence reason why someone should watch the movie "${movie.title}". Focus on the vibe or unique selling point.`;
+        const text = await geminiService.generateText(prompt);
+        setAiReason(text);
+        toast.success("AI Insight Generated!");
+    } catch (error) {
+        toast.error("Failed to get AI insight.");
+    } finally {
+        setAiLoading(false);
+    }
+  };
 
   const isWatching = location.pathname.endsWith("/watch");
 
@@ -105,7 +124,7 @@ const MovieDetailPage = () => {
             />
             <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/40 to-transparent z-0" />
 
-            {/* Center Play Button: Higher Z-index to ensure clickability */}
+            {/* Play Button */}
             <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
               <Link
                 to={`/movie/${movieId}/watch`}
@@ -148,25 +167,46 @@ const MovieDetailPage = () => {
                   </span>
                 </div>
 
-                <div className="flex gap-4">
-                  <Button
-                    variant={inWatchlist ? "primary" : "outline"}
-                    onClick={toggleWatchlist}
-                    className="px-6 py-3 rounded-full! gap-2 flex items-center border border-white/20 hover:border-green-500"
-                  >
-                    <Icon name={inWatchlist ? "check" : "add"} />
-                    {inWatchlist ? "Added to Watchlist" : "Add to Watchlist"}
-                  </Button>
-                </div>
+                  <div className="flex flex-col gap-4">
+                    <div className="flex gap-4">
+                      <Button
+                        variant={inWatchlist ? "primary" : "outline"}
+                        onClick={toggleWatchlist}
+                        className="px-6 py-3 rounded-full! gap-2 flex items-center border border-white/20 hover:border-green-500"
+                      >
+                        <Icon name={inWatchlist ? "check" : "add"} />
+                        {inWatchlist ? "Added to Watchlist" : "Add to Watchlist"}
+                      </Button>
+                      
+                      <Button
+                        variant="ghost"
+                        onClick={fetchAiReason}
+                        disabled={aiLoading || aiReason}
+                        className="px-6 py-3 rounded-full! gap-2 flex items-center border border-purple-500/50 text-purple-400 hover:bg-purple-500/10 hover:border-purple-500"
+                      >
+                        <Icon name="auto_awesome" className={aiLoading ? "animate-spin" : ""} />
+                        {aiLoading ? "Thinking..." : "Why Watch This?"}
+                      </Button>
+                    </div>
+
+                    {aiReason && (
+                        <div className="animate-in fade-in slide-in-from-top-4 duration-500 bg-purple-900/20 border border-purple-500/30 p-4 rounded-xl max-w-xl">
+                            <p className="text-purple-200 italic font-medium">
+                                <span className="text-2xl mr-2">✨</span>
+                                {aiReason}
+                            </p>
+                        </div>
+                    )}
+                  </div>
               </div>
             </div>
           </div>
         )}
       </div>
 
-      {/* SHARED CONTENT GRID: Story, Cast, and Trailer */}
+      {/* SHARED CONTENT GRID */}
       <div className="px-6 lg:px-16 mt-20 grid grid-cols-1 lg:grid-cols-3 gap-20">
-        {/* Main Content: Storyline & Cast */}
+        {/* Main Content */}
         <div className="lg:col-span-2 space-y-20">
           <section className="animate-in fade-in slide-in-from-left-6 duration-700">
             <h3 className="text-3xl font-black mb-6 text-green-500 flex items-center gap-4 italic uppercase tracking-tighter">
@@ -192,7 +232,7 @@ const MovieDetailPage = () => {
           </section>
         </div>
 
-        {/* Sidebar: Trailer & Meta Info */}
+        {/* Sidebar */}
         <div className="space-y-16 animate-in fade-in slide-in-from-right-6 duration-700">
           <section>
             <h3 className="text-xs font-bold mb-6 uppercase tracking-[0.4em] text-zinc-600">
@@ -239,7 +279,7 @@ const MovieDetailPage = () => {
         </div>
       </div>
 
-      {/* 3. SIMILAR MOVIES: High-engagement Discovery Section */}
+      {/* 3. SIMILAR MOVIES */}
       <div className="mt-32">
         <MovieList title="Discover More Like This" movies={movie.similar} />
       </div>
