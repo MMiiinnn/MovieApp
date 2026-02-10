@@ -3,7 +3,7 @@ import Badge from "../atoms/Badge";
 import Button from "../atoms/Button";
 import MovieRating from "../atoms/MovieRating";
 import { formatRuntime } from "../helpers/formatRuntime";
-import { getImageUrl } from "../services/apiConfig";
+import { getImageUrl } from "../../services/apiConfig";
 import Genres from "../atoms/Genres";
 import SideMovieList from "./SideMovieList";
 import useWatchlistStore from "../../store/useWatchlistStore";

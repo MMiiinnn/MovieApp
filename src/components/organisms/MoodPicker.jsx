@@ -3,16 +3,16 @@ import geminiService from "../../services/geminiService";
 import Button from "../atoms/Button";
 import Icon from "../atoms/Icon";
 import toast from "react-hot-toast";
-import tmdbService from "../../components/services/tmdbService";
+import tmdbService from "../../services/tmdbService";
 import { Link } from "react-router-dom";
 
 const MOODS = [
-  { label: "Happy", icon: "😊", color: "bg-yellow-500" },
-  { label: "Sad", icon: "😢", color: "bg-blue-500" },
-  { label: "Excited", icon: "🤩", color: "bg-red-500" },
-  { label: "Relaxed", icon: "😴", color: "bg-purple-500" },
-  { label: "Thoughtful", icon: "🤔", color: "bg-green-500" },
-  { label: "Scared", icon: "😨", color: "bg-gray-700" },
+  { label: "Happy", icon: "sentiment_satisfied", color: "bg-yellow-500" },
+  { label: "Sad", icon: "sentiment_dissatisfied", color: "bg-blue-500" },
+  { label: "Excited", icon: "celebration", color: "bg-red-500" },
+  { label: "Relaxed", icon: "self_improvement", color: "bg-purple-500" },
+  { label: "Thoughtful", icon: "psychology", color: "bg-green-500" },
+  { label: "Scared", icon: "sentiment_very_dissatisfied", color: "bg-gray-700" },
 ];
 
 const MoodPicker = () => {
@@ -84,7 +84,7 @@ const MoodPicker = () => {
                   : "bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white"
                 }`}
             >
-              <span className="text-2xl">{mood.icon}</span>
+              <Icon name={mood.icon} className="text-2xl" />
               <span className="font-bold uppercase tracking-wide">{mood.label}</span>
             </button>
           ))}

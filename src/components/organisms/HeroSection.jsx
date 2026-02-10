@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import Button from "../atoms/Button";
 import useWatchlistStore from "../../store/useWatchlistStore";
+import Icon from "../atoms/Icon";
 
 const HeroSection = ({ movies }) => {
   const navigate = useNavigate();
@@ -90,9 +91,7 @@ const HeroSection = ({ movies }) => {
                       onClick={(e) => toggleWatchlist(e, movie)}
                       className="px-6 py-3 rounded-md! gap-2 flex items-center"
                     >
-                      <span className="material-symbols-outlined">
-                        {inWatchlist ? "check" : "add"}
-                      </span>
+                      <Icon name={inWatchlist ? "check" : "add"} />
                       {inWatchlist ? "Added" : "Watchlist"}
                     </Button>
                   </div>

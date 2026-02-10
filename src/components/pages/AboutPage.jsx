@@ -3,6 +3,7 @@ import Button from "../atoms/Button";
 import { Link } from "react-router-dom";
 import geminiService from "../../services/geminiService"; 
 import toast from "react-hot-toast";
+import Icon from "../atoms/Icon";
 
 const TestConnection = () => {
     const [status, setStatus] = useState("");
@@ -53,29 +54,35 @@ const AboutPage = () => {
             About FillFilm
           </h1>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Your ultimate destination for discovering movies and TV shows. 
-            Built with passion, powered by TMDB, and designed for movie lovers.
+            Your ultimate destination for discovering movies. 
+            Powered by TMDB, enhanced by Google Gemini AI, and designed for you.
           </p>
         </section>
 
         {/* Features Grid */}
         <section className="grid md:grid-cols-3 gap-8 text-center">
-          <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:border-green-500/50 transition-colors">
-            <div className="text-4xl mb-4">🎬</div>
+          <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:border-green-500/50 transition-colors group">
+            <div className="text-4xl mb-4 text-green-500">
+                <Icon name="movie" className="text-5xl group-hover:scale-110 transition-transform" />
+            </div>
             <h3 className="text-xl font-bold mb-2 uppercase tracking-wide">Discovery</h3>
             <p className="text-zinc-500 text-sm">
               Explore thousands of movies and TV shows with comprehensive details, trails, and cast info.
             </p>
           </div>
-          <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:border-green-500/50 transition-colors">
-            <div className="text-4xl mb-4">🚀</div>
+          <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:border-green-500/50 transition-colors group">
+            <div className="text-4xl mb-4 text-blue-500">
+                <Icon name="bolt" className="text-5xl group-hover:scale-110 transition-transform" />
+            </div>
             <h3 className="text-xl font-bold mb-2 uppercase tracking-wide">Speed</h3>
             <p className="text-zinc-500 text-sm">
               Lightning fast search and navigation powered by modern web technologies.
             </p>
           </div>
-          <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:border-green-500/50 transition-colors">
-            <div className="text-4xl mb-4">💖</div>
+          <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:border-green-500/50 transition-colors group">
+            <div className="text-4xl mb-4 text-red-500">
+                 <Icon name="favorite" className="text-5xl group-hover:scale-110 transition-transform" />
+            </div>
             <h3 className="text-xl font-bold mb-2 uppercase tracking-wide">Personal</h3>
             <p className="text-zinc-500 text-sm">
               Create your own watchlist and keep track of everything you want to see.

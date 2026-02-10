@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import tmdbService from "../services/tmdbService";
+import tmdbService from "../../services/tmdbService";
 import MovieCard from "../molecules/MovieCard";
 import MovieCardSkeleton from "../atoms/MovieCardSkeleton";
 import Button from "../atoms/Button";

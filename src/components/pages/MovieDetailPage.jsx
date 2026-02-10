@@ -1,6 +1,6 @@
 import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
-import movieService from "../services/tmdbService";
+import movieService from "../../services/tmdbService";
 import MovieRating from "../atoms/MovieRating";
 import Badge from "../atoms/Badge";
 import Icon from "../atoms/Icon";
@@ -101,9 +101,7 @@ const MovieDetailPage = () => {
                 to={`/movie/${movieId}`}
                 className="flex items-center gap-2 text-zinc-400 hover:text-green-500 transition-colors group"
               >
-                <span className="material-symbols-outlined transition-transform group-hover:-translate-x-1">
-                  arrow_back
-                </span>
+                <Icon name="arrow_back" className="transition-transform group-hover:-translate-x-1" />
                 <span className="font-medium tracking-wide">Back to Info</span>
               </Link>
               <h2 className="text-xl font-black text-green-500 truncate max-w-[60%] uppercase tracking-widest hidden md:block italic">
